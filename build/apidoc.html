@@ -865,7 +865,23 @@
   }
   return Buffer.from(arg, encodingOrOffset, length);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+for (var i = 0, t = Date.now(); i &#x3c; N; i++) nodeuuid.v4({rng: nodeuuid.mathRNG});
+rate(&#x27;nodeuuid.v4() - using Math.random() RNG&#x27;, t);
+
+for (var i = 0, t = Date.now(); i &#x3c; N; i++) nodeuuid.v4(&#x27;binary&#x27;);
+rate(&#x27;nodeuuid.v4(\&#x27;binary\&#x27;)&#x27;, t);
+
+var buffer = new nodeuuid.<span class="apidocCodeKeywordSpan">BufferClass</span>(16);
+for (var i = 0, t = Date.now(); i &#x3c; N; i++) nodeuuid.v4(&#x27;binary&#x27;, buffer);
+rate(&#x27;nodeuuid.v4(\&#x27;binary\&#x27;, buffer)&#x27;, t);
+}
+
+// libuuid - string form
+if (uuid) {
+for (var i = 0, t = Date.now(); i &#x3c; N; i++) uuid();
+...</pre></li>
     </ul>
 
 
@@ -1029,7 +1045,23 @@
 
   return buf ? buf : unparse(b);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+rate(&#x27;140byte.es_v4&#x27;, t);
+
+console.log(&#x27;&#x27;);
+console.log(&#x27;# v1&#x27;);
+
+// node-uuid - v1 string form
+if (nodeuuid) {
+for (var i = 0, t = Date.now(); i &#x3c; N; i++) nodeuuid.<span class="apidocCodeKeywordSpan">v1</span>();
+rate(&#x27;nodeuuid.v1()&#x27;, t);
+
+for (var i = 0, t = Date.now(); i &#x3c; N; i++) nodeuuid.v1(&#x27;binary&#x27;);
+rate(&#x27;nodeuuid.v1(\&#x27;binary\&#x27;)&#x27;, t);
+
+var buffer = new nodeuuid.BufferClass(16);
+for (var i = 0, t = Date.now(); i &#x3c; N; i++) nodeuuid.v1(&#x27;binary&#x27;, buffer);
+...</pre></li>
     </ul>
 
 
@@ -1066,7 +1098,23 @@
 
   return buf || unparse(rnds);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  &#x27; uuids/second&#x27;);
+}
+
+console.log(&#x27;# v4&#x27;);
+
+// node-uuid - string form
+if (nodeuuid) {
+for (var i = 0, t = Date.now(); i &#x3c; N; i++) nodeuuid.<span class="apidocCodeKeywordSpan">v4</span>();
+rate(&#x27;nodeuuid.v4() - using node.js crypto RNG&#x27;, t);
+
+for (var i = 0, t = Date.now(); i &#x3c; N; i++) nodeuuid.v4({rng: nodeuuid.mathRNG});
+rate(&#x27;nodeuuid.v4() - using Math.random() RNG&#x27;, t);
+
+for (var i = 0, t = Date.now(); i &#x3c; N; i++) nodeuuid.v4(&#x27;binary&#x27;);
+rate(&#x27;nodeuuid.v4(\&#x27;binary\&#x27;)&#x27;, t);
+...</pre></li>
     </ul>
 
 
@@ -1099,7 +1147,23 @@
   }
   return Buffer.from(arg, encodingOrOffset, length);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+for (var i = 0, t = Date.now(); i &#x3c; N; i++) nodeuuid.v4({rng: nodeuuid.mathRNG});
+rate(&#x27;nodeuuid.v4() - using Math.random() RNG&#x27;, t);
+
+for (var i = 0, t = Date.now(); i &#x3c; N; i++) nodeuuid.v4(&#x27;binary&#x27;);
+rate(&#x27;nodeuuid.v4(\&#x27;binary\&#x27;)&#x27;, t);
+
+var buffer = new nodeuuid.<span class="apidocCodeKeywordSpan">BufferClass</span>(16);
+for (var i = 0, t = Date.now(); i &#x3c; N; i++) nodeuuid.v4(&#x27;binary&#x27;, buffer);
+rate(&#x27;nodeuuid.v4(\&#x27;binary\&#x27;, buffer)&#x27;, t);
+}
+
+// libuuid - string form
+if (uuid) {
+for (var i = 0, t = Date.now(); i &#x3c; N; i++) uuid();
+...</pre></li>
     </ul>
 
 
@@ -2220,21 +2284,22 @@
   return result;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-        H[1] = (H[1]+b) &#x3e;&#x3e;&#x3e; 0;
-        H[2] = (H[2]+c) &#x3e;&#x3e;&#x3e; 0;
-        H[3] = (H[3]+d) &#x3e;&#x3e;&#x3e; 0;
-        H[4] = (H[4]+e) &#x3e;&#x3e;&#x3e; 0;
-    }
+// uuid-js - string form
+if (uuidjs) {
+  for (var i = 0, t = Date.now(); i &#x3c; N; i++) uuidjs.create(4);
+  rate(&#x27;uuidjs.create(4)&#x27;, t);
+}
 
-    // convert H0..H4 to hex strings (with leading zeros)
-    for (var h=0; h&#x3c;H.length; h++) H[h] = (&#x27;00000000&#x27;+H[h].<span class="apidocCodeKeywordSpan">toString</span>(16
-)).slice(-8);
+// 140byte.es
+for (var i = 0, t = Date.now(); i &#x3c; N; i++) &#x27;xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx&#x27;.replace(/[xy]/g,function(s,r){
+r=Math.random()*16|0;return (s==&#x27;x&#x27;?r:r&#x26;0x3|0x8).<span class="apidocCodeKeywordSpan">toString</span>(16)});
+rate(&#x27;140byte.es_v4&#x27;, t);
 
-    // concatenate H0..H4, with separator if required
-    var separator = opt.outFormat==&#x27;hex-w&#x27; ? &#x27; &#x27; : &#x27;&#x27;;
+console.log(&#x27;&#x27;);
+console.log(&#x27;# v1&#x27;);
 
-    return H.join(separator);
-};
+// node-uuid - v1 string form
+if (nodeuuid) {
 ...</pre></li>
     </ul>
 
