@@ -1,0 +1,3042 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/broofa/node-uuid">node-uuid (v1.4.8)</a>
+</h1>
+<h4>Rigorous implementation of RFC4122 (v1 and v4) UUIDs.</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-uuid">module node-uuid</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass">
+            function <span class="apidocSignatureSpan">node-uuid.</span>BufferClass
+            <span class="apidocSignatureSpan">(arg, encodingOrOffset, length)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid._nodeRNG">
+            function <span class="apidocSignatureSpan">node-uuid.</span>_nodeRNG
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid._rng">
+            function <span class="apidocSignatureSpan">node-uuid.</span>_rng
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.parse">
+            function <span class="apidocSignatureSpan">node-uuid.</span>parse
+            <span class="apidocSignatureSpan">(s, buf, offset)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.unparse">
+            function <span class="apidocSignatureSpan">node-uuid.</span>unparse
+            <span class="apidocSignatureSpan">(buf, offset)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.v1">
+            function <span class="apidocSignatureSpan">node-uuid.</span>v1
+            <span class="apidocSignatureSpan">(options, buf, offset)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.v4">
+            function <span class="apidocSignatureSpan">node-uuid.</span>v4
+            <span class="apidocSignatureSpan">(options, buf, offset)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-uuid.</span>BufferClass.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-uuid.</span>sha1_browser</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-uuid.BufferClass">module node-uuid.BufferClass</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.BufferClass">
+            function <span class="apidocSignatureSpan">node-uuid.</span>BufferClass
+            <span class="apidocSignatureSpan">(arg, encodingOrOffset, length)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.alloc">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>alloc
+            <span class="apidocSignatureSpan">(size, fill, encoding)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.allocUnsafe">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>allocUnsafe
+            <span class="apidocSignatureSpan">(size)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.allocUnsafeSlow">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>allocUnsafeSlow
+            <span class="apidocSignatureSpan">(size)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.byteLength">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>byteLength
+            <span class="apidocSignatureSpan">(string, encoding)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.compare">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>compare
+            <span class="apidocSignatureSpan">(a, b)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.concat">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>concat
+            <span class="apidocSignatureSpan">(list, length)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.from">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>from
+            <span class="apidocSignatureSpan">(value, encodingOrOffset, length)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.isBuffer">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>isBuffer
+            <span class="apidocSignatureSpan">(b)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.isEncoding">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>isEncoding
+            <span class="apidocSignatureSpan">(encoding)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>poolSize</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-uuid.BufferClass.prototype">module node-uuid.BufferClass.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.asciiSlice">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>asciiSlice
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.asciiWrite">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>asciiWrite
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.base64Slice">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>base64Slice
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.base64Write">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>base64Write
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.compare">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>compare
+            <span class="apidocSignatureSpan">(target, start, end, thisStart, thisEnd)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.copy">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>copy
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.equals">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>equals
+            <span class="apidocSignatureSpan">(b)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.fill">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>fill
+            <span class="apidocSignatureSpan">(val, start, end, encoding)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.hexSlice">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>hexSlice
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.hexWrite">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>hexWrite
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.includes">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>includes
+            <span class="apidocSignatureSpan">(val, byteOffset, encoding)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.indexOf">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>indexOf
+            <span class="apidocSignatureSpan">(val, byteOffset, encoding)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.inspect">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>inspect
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.lastIndexOf">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>lastIndexOf
+            <span class="apidocSignatureSpan">(val, byteOffset, encoding)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.latin1Slice">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>latin1Slice
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.latin1Write">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>latin1Write
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.readDoubleBE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readDoubleBE
+            <span class="apidocSignatureSpan">(offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.readDoubleLE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readDoubleLE
+            <span class="apidocSignatureSpan">(offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.readFloatBE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readFloatBE
+            <span class="apidocSignatureSpan">(offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.readFloatLE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readFloatLE
+            <span class="apidocSignatureSpan">(offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.readInt16BE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readInt16BE
+            <span class="apidocSignatureSpan">(offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.readInt16LE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readInt16LE
+            <span class="apidocSignatureSpan">(offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.readInt32BE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readInt32BE
+            <span class="apidocSignatureSpan">(offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.readInt32LE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readInt32LE
+            <span class="apidocSignatureSpan">(offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.readInt8">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readInt8
+            <span class="apidocSignatureSpan">(offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.readIntBE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readIntBE
+            <span class="apidocSignatureSpan">(offset, byteLength, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.readIntLE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readIntLE
+            <span class="apidocSignatureSpan">(offset, byteLength, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.readUInt16BE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readUInt16BE
+            <span class="apidocSignatureSpan">(offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.readUInt16LE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readUInt16LE
+            <span class="apidocSignatureSpan">(offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.readUInt32BE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readUInt32BE
+            <span class="apidocSignatureSpan">(offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.readUInt32LE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readUInt32LE
+            <span class="apidocSignatureSpan">(offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.readUInt8">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readUInt8
+            <span class="apidocSignatureSpan">(offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.readUIntBE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readUIntBE
+            <span class="apidocSignatureSpan">(offset, byteLength, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.readUIntLE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readUIntLE
+            <span class="apidocSignatureSpan">(offset, byteLength, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.slice">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>slice
+            <span class="apidocSignatureSpan">(start, end)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.swap16">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>swap16
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.swap32">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>swap32
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.swap64">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>swap64
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.toJSON">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>toJSON
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.toString">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.ucs2Slice">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>ucs2Slice
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.ucs2Write">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>ucs2Write
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.utf8Slice">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>utf8Slice
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.utf8Write">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>utf8Write
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.write">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>write
+            <span class="apidocSignatureSpan">(string, offset, length, encoding)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.writeDoubleBE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeDoubleBE
+            <span class="apidocSignatureSpan">(val, offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.writeDoubleLE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeDoubleLE
+            <span class="apidocSignatureSpan">(val, offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.writeFloatBE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeFloatBE
+            <span class="apidocSignatureSpan">(val, offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.writeFloatLE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeFloatLE
+            <span class="apidocSignatureSpan">(val, offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.writeInt16BE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeInt16BE
+            <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.writeInt16LE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeInt16LE
+            <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.writeInt32BE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeInt32BE
+            <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.writeInt32LE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeInt32LE
+            <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.writeInt8">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeInt8
+            <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.writeIntBE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeIntBE
+            <span class="apidocSignatureSpan">(value, offset, byteLength, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.writeIntLE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeIntLE
+            <span class="apidocSignatureSpan">(value, offset, byteLength, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.writeUInt16BE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeUInt16BE
+            <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.writeUInt16LE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeUInt16LE
+            <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.writeUInt32BE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeUInt32BE
+            <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.writeUInt32LE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeUInt32LE
+            <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.writeUInt8">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeUInt8
+            <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.writeUIntBE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeUIntBE
+            <span class="apidocSignatureSpan">(value, offset, byteLength, noAssert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.BufferClass.prototype.writeUIntLE">
+            function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeUIntLE
+            <span class="apidocSignatureSpan">(value, offset, byteLength, noAssert)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-uuid.sha1_browser">module node-uuid.sha1_browser</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.sha1_browser.hash">
+            function <span class="apidocSignatureSpan">node-uuid.sha1_browser.</span>hash
+            <span class="apidocSignatureSpan">(msg, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.sha1_browser.hexBytesToString">
+            function <span class="apidocSignatureSpan">node-uuid.sha1_browser.</span>hexBytesToString
+            <span class="apidocSignatureSpan">(hexStr)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-uuid.sha1_browser.utf8Encode">
+            function <span class="apidocSignatureSpan">node-uuid.sha1_browser.</span>utf8Encode
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-uuid" id="apidoc.module.node-uuid">module node-uuid</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass" id="apidoc.element.node-uuid.BufferClass">
+        function <span class="apidocSignatureSpan">node-uuid.</span>BufferClass
+        <span class="apidocSignatureSpan">(arg, encodingOrOffset, length)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Buffer(arg, encodingOrOffset, length) {
+  // Common case.
+  if (typeof arg === 'number') {
+    if (typeof encodingOrOffset === 'string') {
+      throw new Error(
+        'If encoding is specified then the first argument must be a string'
+      );
+    }
+    return Buffer.allocUnsafe(arg);
+  }
+  return Buffer.from(arg, encodingOrOffset, length);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+for (var i = 0, t = Date.now(); i &lt; N; i++) nodeuuid.v4({rng: nodeuuid.mathRNG});
+rate('nodeuuid.v4() - using Math.random() RNG', t);
+
+for (var i = 0, t = Date.now(); i &lt; N; i++) nodeuuid.v4('binary');
+rate('nodeuuid.v4(\'binary\')', t);
+
+var buffer = new nodeuuid.<span class="apidocCodeKeywordSpan">BufferClass</span>(16);
+for (var i = 0, t = Date.now(); i &lt; N; i++) nodeuuid.v4('binary', buffer);
+rate('nodeuuid.v4(\'binary\', buffer)', t);
+}
+
+// libuuid - string form
+if (uuid) {
+for (var i = 0, t = Date.now(); i &lt; N; i++) uuid();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid._nodeRNG" id="apidoc.element.node-uuid._nodeRNG">
+        function <span class="apidocSignatureSpan">node-uuid.</span>_nodeRNG
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_nodeRNG = function () {return _rb(16);}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid._rng" id="apidoc.element.node-uuid._rng">
+        function <span class="apidocSignatureSpan">node-uuid.</span>_rng
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_rng = function () {return _rb(16);}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.parse" id="apidoc.element.node-uuid.parse">
+        function <span class="apidocSignatureSpan">node-uuid.</span>parse
+        <span class="apidocSignatureSpan">(s, buf, offset)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parse(s, buf, offset) {
+  var i = (buf &amp;&amp; offset) || 0, ii = 0;
+
+  buf = buf || [];
+  s.toLowerCase().replace(/[0-9a-f]{2}/g, function(oct) {
+    if (ii &lt; 16) { // Don't overflow!
+      buf[i + ii++] = _hexToByte[oct];
+    }
+  });
+
+  // Zero out remaining bytes if string was short
+  while (ii &lt; 16) {
+    buf[i + ii++] = 0;
+  }
+
+  return buf;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.unparse" id="apidoc.element.node-uuid.unparse">
+        function <span class="apidocSignatureSpan">node-uuid.</span>unparse
+        <span class="apidocSignatureSpan">(buf, offset)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function unparse(buf, offset) {
+  var i = offset || 0, bth = _byteToHex;
+  return  bth[buf[i++]] + bth[buf[i++]] +
+          bth[buf[i++]] + bth[buf[i++]] + '-' +
+          bth[buf[i++]] + bth[buf[i++]] + '-' +
+          bth[buf[i++]] + bth[buf[i++]] + '-' +
+          bth[buf[i++]] + bth[buf[i++]] + '-' +
+          bth[buf[i++]] + bth[buf[i++]] +
+          bth[buf[i++]] + bth[buf[i++]] +
+          bth[buf[i++]] + bth[buf[i++]];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.v1" id="apidoc.element.node-uuid.v1">
+        function <span class="apidocSignatureSpan">node-uuid.</span>v1
+        <span class="apidocSignatureSpan">(options, buf, offset)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function v1(options, buf, offset) {
+  var i = buf &amp;&amp; offset || 0;
+  var b = buf || [];
+
+  options = options || {};
+
+  var clockseq = (options.clockseq != null) ? options.clockseq : _clockseq;
+
+  // UUID timestamps are 100 nano-second units since the Gregorian epoch,
+  // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
+  // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
+  // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
+  var msecs = (options.msecs != null) ? options.msecs : new Date().getTime();
+
+  // Per 4.2.1.2, use count of uuid's generated during the current clock
+  // cycle to simulate higher resolution clock
+  var nsecs = (options.nsecs != null) ? options.nsecs : _lastNSecs + 1;
+
+  // Time since last uuid creation (in msecs)
+  var dt = (msecs - _lastMSecs) + (nsecs - _lastNSecs)/10000;
+
+  // Per 4.2.1.2, Bump clockseq on clock regression
+  if (dt &lt; 0 &amp;&amp; options.clockseq == null) {
+    clockseq = clockseq + 1 &amp; 0x3fff;
+  }
+
+  // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
+  // time interval
+  if ((dt &lt; 0 || msecs &gt; _lastMSecs) &amp;&amp; options.nsecs == null) {
+    nsecs = 0;
+  }
+
+  // Per 4.2.1.2 Throw error if too many uuids are requested
+  if (nsecs &gt;= 10000) {
+    throw new Error('uuid.v1(): Can\'t create more than 10M uuids/sec');
+  }
+
+  _lastMSecs = msecs;
+  _lastNSecs = nsecs;
+  _clockseq = clockseq;
+
+  // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
+  msecs += 12219292800000;
+
+  // `time_low`
+  var tl = ((msecs &amp; 0xfffffff) * 10000 + nsecs) % 0x100000000;
+  b[i++] = tl &gt;&gt;&gt; 24 &amp; 0xff;
+  b[i++] = tl &gt;&gt;&gt; 16 &amp; 0xff;
+  b[i++] = tl &gt;&gt;&gt; 8 &amp; 0xff;
+  b[i++] = tl &amp; 0xff;
+
+  // `time_mid`
+  var tmh = (msecs / 0x100000000 * 10000) &amp; 0xfffffff;
+  b[i++] = tmh &gt;&gt;&gt; 8 &amp; 0xff;
+  b[i++] = tmh &amp; 0xff;
+
+  // `time_high_and_version`
+  b[i++] = tmh &gt;&gt;&gt; 24 &amp; 0xf | 0x10; // include version
+  b[i++] = tmh &gt;&gt;&gt; 16 &amp; 0xff;
+
+  // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
+  b[i++] = clockseq &gt;&gt;&gt; 8 | 0x80;
+
+  // `clock_seq_low`
+  b[i++] = clockseq &amp; 0xff;
+
+  // `node`
+  var node = options.node || _nodeId;
+  for (var n = 0; n &lt; 6; n++) {
+    b[i + n] = node[n];
+  }
+
+  return buf ? buf : unparse(b);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+rate('140byte.es_v4', t);
+
+console.log('');
+console.log('# v1');
+
+// node-uuid - v1 string form
+if (nodeuuid) {
+for (var i = 0, t = Date.now(); i &lt; N; i++) nodeuuid.<span class="apidocCodeKeywordSpan">v1</span>();
+rate('nodeuuid.v1()', t);
+
+for (var i = 0, t = Date.now(); i &lt; N; i++) nodeuuid.v1('binary');
+rate('nodeuuid.v1(\'binary\')', t);
+
+var buffer = new nodeuuid.BufferClass(16);
+for (var i = 0, t = Date.now(); i &lt; N; i++) nodeuuid.v1('binary', buffer);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.v4" id="apidoc.element.node-uuid.v4">
+        function <span class="apidocSignatureSpan">node-uuid.</span>v4
+        <span class="apidocSignatureSpan">(options, buf, offset)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function v4(options, buf, offset) {
+  // Deprecated - 'format' argument, as supported in v1.2
+  var i = buf &amp;&amp; offset || 0;
+
+  if (typeof(options) === 'string') {
+    buf = (options === 'binary') ? new BufferClass(16) : null;
+    options = null;
+  }
+  options = options || {};
+
+  var rnds = options.random || (options.rng || _rng)();
+
+  // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+  rnds[6] = (rnds[6] &amp; 0x0f) | 0x40;
+  rnds[8] = (rnds[8] &amp; 0x3f) | 0x80;
+
+  // Copy bytes to buffer, if provided
+  if (buf) {
+    for (var ii = 0; ii &lt; 16; ii++) {
+      buf[i + ii] = rnds[ii];
+    }
+  }
+
+  return buf || unparse(rnds);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  ' uuids/second');
+}
+
+console.log('# v4');
+
+// node-uuid - string form
+if (nodeuuid) {
+for (var i = 0, t = Date.now(); i &lt; N; i++) nodeuuid.<span class="apidocCodeKeywordSpan">v4</span>();
+rate('nodeuuid.v4() - using node.js crypto RNG', t);
+
+for (var i = 0, t = Date.now(); i &lt; N; i++) nodeuuid.v4({rng: nodeuuid.mathRNG});
+rate('nodeuuid.v4() - using Math.random() RNG', t);
+
+for (var i = 0, t = Date.now(); i &lt; N; i++) nodeuuid.v4('binary');
+rate('nodeuuid.v4(\'binary\')', t);
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-uuid.BufferClass" id="apidoc.module.node-uuid.BufferClass">module node-uuid.BufferClass</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.BufferClass" id="apidoc.element.node-uuid.BufferClass.BufferClass">
+        function <span class="apidocSignatureSpan">node-uuid.</span>BufferClass
+        <span class="apidocSignatureSpan">(arg, encodingOrOffset, length)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Buffer(arg, encodingOrOffset, length) {
+  // Common case.
+  if (typeof arg === 'number') {
+    if (typeof encodingOrOffset === 'string') {
+      throw new Error(
+        'If encoding is specified then the first argument must be a string'
+      );
+    }
+    return Buffer.allocUnsafe(arg);
+  }
+  return Buffer.from(arg, encodingOrOffset, length);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+for (var i = 0, t = Date.now(); i &lt; N; i++) nodeuuid.v4({rng: nodeuuid.mathRNG});
+rate('nodeuuid.v4() - using Math.random() RNG', t);
+
+for (var i = 0, t = Date.now(); i &lt; N; i++) nodeuuid.v4('binary');
+rate('nodeuuid.v4(\'binary\')', t);
+
+var buffer = new nodeuuid.<span class="apidocCodeKeywordSpan">BufferClass</span>(16);
+for (var i = 0, t = Date.now(); i &lt; N; i++) nodeuuid.v4('binary', buffer);
+rate('nodeuuid.v4(\'binary\', buffer)', t);
+}
+
+// libuuid - string form
+if (uuid) {
+for (var i = 0, t = Date.now(); i &lt; N; i++) uuid();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.alloc" id="apidoc.element.node-uuid.BufferClass.alloc">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>alloc
+        <span class="apidocSignatureSpan">(size, fill, encoding)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">alloc = function (size, fill, encoding) {
+  assertSize(size);
+  if (size &gt; 0 &amp;&amp; fill !== undefined) {
+    // Since we are filling anyway, don't zero fill initially.
+    // Only pay attention to encoding if it's a string. This
+    // prevents accidentally sending in a number that would
+    // be interpretted as a start offset.
+    if (typeof encoding !== 'string')
+      encoding = undefined;
+    return createUnsafeBuffer(size).fill(fill, encoding);
+  }
+  return new FastBuffer(size);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.allocUnsafe" id="apidoc.element.node-uuid.BufferClass.allocUnsafe">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>allocUnsafe
+        <span class="apidocSignatureSpan">(size)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">allocUnsafe = function (size) {
+  assertSize(size);
+  return allocate(size);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.allocUnsafeSlow" id="apidoc.element.node-uuid.BufferClass.allocUnsafeSlow">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>allocUnsafeSlow
+        <span class="apidocSignatureSpan">(size)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">allocUnsafeSlow = function (size) {
+  assertSize(size);
+  return createUnsafeBuffer(size);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.byteLength" id="apidoc.element.node-uuid.BufferClass.byteLength">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>byteLength
+        <span class="apidocSignatureSpan">(string, encoding)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function byteLength(string, encoding) {
+  if (typeof string !== 'string') {
+    if (ArrayBuffer.isView(string) || isArrayBuffer(string) ||
+        isSharedArrayBuffer(string)) {
+      return string.byteLength;
+    }
+
+    string = '' + string;
+  }
+
+  var len = string.length;
+  if (len === 0)
+    return 0;
+
+  // Use a for loop to avoid recursion
+  var loweredCase = false;
+  for (;;) {
+    switch (encoding) {
+      case 'ascii':
+      case 'latin1':
+      case 'binary':
+        return len;
+
+      case 'utf8':
+      case 'utf-8':
+      case undefined:
+        return binding.byteLengthUtf8(string);
+
+      case 'ucs2':
+      case 'ucs-2':
+      case 'utf16le':
+      case 'utf-16le':
+        return len * 2;
+
+      case 'hex':
+        return len &gt;&gt;&gt; 1;
+
+      case 'base64':
+        return base64ByteLength(string, len);
+
+      default:
+        // The C++ binding defaulted to UTF8, we should too.
+        if (loweredCase)
+          return binding.byteLengthUtf8(string);
+
+        encoding = ('' + encoding).toLowerCase();
+        loweredCase = true;
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.compare" id="apidoc.element.node-uuid.BufferClass.compare">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>compare
+        <span class="apidocSignatureSpan">(a, b)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function compare(a, b) {
+  if (!(a instanceof Buffer) ||
+      !(b instanceof Buffer)) {
+    throw new TypeError('Arguments must be Buffers');
+  }
+
+  if (a === b) {
+    return 0;
+  }
+
+  return binding.compare(a, b);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.concat" id="apidoc.element.node-uuid.BufferClass.concat">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>concat
+        <span class="apidocSignatureSpan">(list, length)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">concat = function (list, length) {
+  var i;
+  if (!Array.isArray(list))
+    throw new TypeError('"list" argument must be an Array of Buffers');
+
+  if (list.length === 0)
+    return new FastBuffer();
+
+  if (length === undefined) {
+    length = 0;
+    for (i = 0; i &lt; list.length; i++)
+      length += list[i].length;
+  } else {
+    length = length &gt;&gt;&gt; 0;
+  }
+
+  var buffer = Buffer.allocUnsafe(length);
+  var pos = 0;
+  for (i = 0; i &lt; list.length; i++) {
+    var buf = list[i];
+    if (!Buffer.isBuffer(buf))
+      throw new TypeError('"list" argument must be an Array of Buffers');
+    buf.copy(buffer, pos);
+    pos += buf.length;
+  }
+
+  // Note: `length` is always equal to `buffer.length` at this point
+  if (pos &lt; length) {
+    // Zero-fill the remaining bytes if the specified `length` was more than
+    // the actual total length, i.e. if we have some remaining allocated bytes
+    // there were not initialized.
+    buffer.fill(0, pos, length);
+  }
+
+  return buffer;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.from" id="apidoc.element.node-uuid.BufferClass.from">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>from
+        <span class="apidocSignatureSpan">(value, encodingOrOffset, length)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">from = function (value, encodingOrOffset, length) {
+  if (typeof value === 'number')
+    throw new TypeError('"value" argument must not be a number');
+
+  if (isArrayBuffer(value) || isSharedArrayBuffer(value))
+    return fromArrayBuffer(value, encodingOrOffset, length);
+
+  if (typeof value === 'string')
+    return fromString(value, encodingOrOffset);
+
+  return fromObject(value);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.isBuffer" id="apidoc.element.node-uuid.BufferClass.isBuffer">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>isBuffer
+        <span class="apidocSignatureSpan">(b)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function isBuffer(b) {
+  return b instanceof Buffer;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.isEncoding" id="apidoc.element.node-uuid.BufferClass.isEncoding">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.</span>isEncoding
+        <span class="apidocSignatureSpan">(encoding)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isEncoding = function (encoding) {
+  return typeof encoding === 'string' &amp;&amp;
+         typeof internalUtil.normalizeEncoding(encoding) === 'string';
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-uuid.BufferClass.prototype" id="apidoc.module.node-uuid.BufferClass.prototype">module node-uuid.BufferClass.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.asciiSlice" id="apidoc.element.node-uuid.BufferClass.prototype.asciiSlice">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>asciiSlice
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function asciiSlice() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.asciiWrite" id="apidoc.element.node-uuid.BufferClass.prototype.asciiWrite">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>asciiWrite
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function asciiWrite() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.base64Slice" id="apidoc.element.node-uuid.BufferClass.prototype.base64Slice">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>base64Slice
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function base64Slice() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.base64Write" id="apidoc.element.node-uuid.BufferClass.prototype.base64Write">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>base64Write
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function base64Write() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.compare" id="apidoc.element.node-uuid.BufferClass.prototype.compare">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>compare
+        <span class="apidocSignatureSpan">(target, start, end, thisStart, thisEnd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function compare(target, start, end, thisStart, thisEnd) {
+
+  if (!(target instanceof Buffer))
+    throw new TypeError('Argument must be a Buffer');
+  if (arguments.length === 1)
+    return compare_(this, target);
+
+  if (start === undefined)
+    start = 0;
+  else if (start &lt; 0)
+    throw new RangeError('out of range index');
+  else
+    start &gt;&gt;&gt;= 0;
+
+  if (end === undefined)
+    end = target.length;
+  else if (end &gt; target.length)
+    throw new RangeError('out of range index');
+  else
+    end &gt;&gt;&gt;= 0;
+
+  if (thisStart === undefined)
+    thisStart = 0;
+  else if (thisStart &lt; 0)
+    throw new RangeError('out of range index');
+  else
+    thisStart &gt;&gt;&gt;= 0;
+
+  if (thisEnd === undefined)
+    thisEnd = this.length;
+  else if (thisEnd &gt; this.length)
+    throw new RangeError('out of range index');
+  else
+    thisEnd &gt;&gt;&gt;= 0;
+
+  if (thisStart &gt;= thisEnd)
+    return (start &gt;= end ? 0 : -1);
+  else if (start &gt;= end)
+    return 1;
+
+  return compareOffset(this, target, start, thisStart, end, thisEnd);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.copy" id="apidoc.element.node-uuid.BufferClass.prototype.copy">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>copy
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function copy() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.equals" id="apidoc.element.node-uuid.BufferClass.prototype.equals">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>equals
+        <span class="apidocSignatureSpan">(b)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function equals(b) {
+  if (!(b instanceof Buffer))
+    throw new TypeError('Argument must be a Buffer');
+
+  if (this === b)
+    return true;
+
+  return binding.compare(this, b) === 0;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.fill" id="apidoc.element.node-uuid.BufferClass.prototype.fill">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>fill
+        <span class="apidocSignatureSpan">(val, start, end, encoding)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function fill(val, start, end, encoding) {
+  // Handle string cases:
+  if (typeof val === 'string') {
+    if (typeof start === 'string') {
+      encoding = start;
+      start = 0;
+      end = this.length;
+    } else if (typeof end === 'string') {
+      encoding = end;
+      end = this.length;
+    }
+
+    if (encoding !== undefined &amp;&amp; typeof encoding !== 'string') {
+      throw new TypeError('encoding must be a string');
+    }
+    var normalizedEncoding = internalUtil.normalizeEncoding(encoding);
+    if (normalizedEncoding === undefined) {
+      throw new TypeError('Unknown encoding: ' + encoding);
+    }
+
+    if (val.length === 0) {
+      // Previously, if val === '', the Buffer would not fill,
+      // which is rather surprising.
+      val = 0;
+    } else if (val.length === 1) {
+      var code = val.charCodeAt(0);
+      if ((normalizedEncoding === 'utf8' &amp;&amp; code &lt; 128) ||
+          normalizedEncoding === 'latin1') {
+        // Fast path: If `val` fits into a single byte, use that numeric value.
+        val = code;
+      }
+    }
+  } else if (typeof val === 'number') {
+    val = val &amp; 255;
+  }
+
+  // Invalid ranges are not set to a default, so can range check early.
+  if (start &lt; 0 || end &gt; this.length)
+    throw new RangeError('Out of range index');
+
+  if (end &lt;= start)
+    return this;
+
+  start = start &gt;&gt;&gt; 0;
+  end = end === undefined ? this.length : end &gt;&gt;&gt; 0;
+
+  binding.fill(this, val, start, end, encoding);
+
+  return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.hexSlice" id="apidoc.element.node-uuid.BufferClass.prototype.hexSlice">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>hexSlice
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function hexSlice() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.hexWrite" id="apidoc.element.node-uuid.BufferClass.prototype.hexWrite">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>hexWrite
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function hexWrite() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.includes" id="apidoc.element.node-uuid.BufferClass.prototype.includes">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>includes
+        <span class="apidocSignatureSpan">(val, byteOffset, encoding)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function includes(val, byteOffset, encoding) {
+  return this.indexOf(val, byteOffset, encoding) !== -1;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.indexOf" id="apidoc.element.node-uuid.BufferClass.prototype.indexOf">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>indexOf
+        <span class="apidocSignatureSpan">(val, byteOffset, encoding)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function indexOf(val, byteOffset, encoding) {
+  return bidirectionalIndexOf(this, val, byteOffset, encoding, true);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.inspect" id="apidoc.element.node-uuid.BufferClass.prototype.inspect">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>inspect
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function inspect() {
+  var str = '';
+  var max = exports.INSPECT_MAX_BYTES;
+  if (this.length &gt; 0) {
+    str = this.toString('hex', 0, max).match(/.{2}/g).join(' ');
+    if (this.length &gt; max)
+      str += ' ... ';
+  }
+  return '&lt;' + this.constructor.name + ' ' + str + '&gt;';
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.lastIndexOf" id="apidoc.element.node-uuid.BufferClass.prototype.lastIndexOf">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>lastIndexOf
+        <span class="apidocSignatureSpan">(val, byteOffset, encoding)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function lastIndexOf(val, byteOffset, encoding) {
+  return bidirectionalIndexOf(this, val, byteOffset, encoding, false);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.latin1Slice" id="apidoc.element.node-uuid.BufferClass.prototype.latin1Slice">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>latin1Slice
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function latin1Slice() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.latin1Write" id="apidoc.element.node-uuid.BufferClass.prototype.latin1Write">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>latin1Write
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function latin1Write() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.readDoubleBE" id="apidoc.element.node-uuid.BufferClass.prototype.readDoubleBE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readDoubleBE
+        <span class="apidocSignatureSpan">(offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function readDoubleBE(offset, noAssert) {
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkOffset(offset, 8, this.length);
+  return binding.readDoubleBE(this, offset);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.readDoubleLE" id="apidoc.element.node-uuid.BufferClass.prototype.readDoubleLE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readDoubleLE
+        <span class="apidocSignatureSpan">(offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function readDoubleLE(offset, noAssert) {
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkOffset(offset, 8, this.length);
+  return binding.readDoubleLE(this, offset);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.readFloatBE" id="apidoc.element.node-uuid.BufferClass.prototype.readFloatBE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readFloatBE
+        <span class="apidocSignatureSpan">(offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function readFloatBE(offset, noAssert) {
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkOffset(offset, 4, this.length);
+  return binding.readFloatBE(this, offset);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.readFloatLE" id="apidoc.element.node-uuid.BufferClass.prototype.readFloatLE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readFloatLE
+        <span class="apidocSignatureSpan">(offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function readFloatLE(offset, noAssert) {
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkOffset(offset, 4, this.length);
+  return binding.readFloatLE(this, offset);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.readInt16BE" id="apidoc.element.node-uuid.BufferClass.prototype.readInt16BE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readInt16BE
+        <span class="apidocSignatureSpan">(offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readInt16BE = function (offset, noAssert) {
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkOffset(offset, 2, this.length);
+  var val = this[offset + 1] | (this[offset] &lt;&lt; 8);
+  return (val &amp; 0x8000) ? val | 0xFFFF0000 : val;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.readInt16LE" id="apidoc.element.node-uuid.BufferClass.prototype.readInt16LE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readInt16LE
+        <span class="apidocSignatureSpan">(offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readInt16LE = function (offset, noAssert) {
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkOffset(offset, 2, this.length);
+  var val = this[offset] | (this[offset + 1] &lt;&lt; 8);
+  return (val &amp; 0x8000) ? val | 0xFFFF0000 : val;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.readInt32BE" id="apidoc.element.node-uuid.BufferClass.prototype.readInt32BE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readInt32BE
+        <span class="apidocSignatureSpan">(offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readInt32BE = function (offset, noAssert) {
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkOffset(offset, 4, this.length);
+
+  return (this[offset] &lt;&lt; 24) |
+      (this[offset + 1] &lt;&lt; 16) |
+      (this[offset + 2] &lt;&lt; 8) |
+      (this[offset + 3]);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.readInt32LE" id="apidoc.element.node-uuid.BufferClass.prototype.readInt32LE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readInt32LE
+        <span class="apidocSignatureSpan">(offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readInt32LE = function (offset, noAssert) {
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkOffset(offset, 4, this.length);
+
+  return (this[offset]) |
+      (this[offset + 1] &lt;&lt; 8) |
+      (this[offset + 2] &lt;&lt; 16) |
+      (this[offset + 3] &lt;&lt; 24);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.readInt8" id="apidoc.element.node-uuid.BufferClass.prototype.readInt8">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readInt8
+        <span class="apidocSignatureSpan">(offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readInt8 = function (offset, noAssert) {
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkOffset(offset, 1, this.length);
+  var val = this[offset];
+  return !(val &amp; 0x80) ? val : (0xff - val + 1) * -1;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.readIntBE" id="apidoc.element.node-uuid.BufferClass.prototype.readIntBE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readIntBE
+        <span class="apidocSignatureSpan">(offset, byteLength, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readIntBE = function (offset, byteLength, noAssert) {
+  offset = offset &gt;&gt;&gt; 0;
+  byteLength = byteLength &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkOffset(offset, byteLength, this.length);
+
+  var i = byteLength;
+  var mul = 1;
+  var val = this[offset + --i];
+  while (i &gt; 0 &amp;&amp; (mul *= 0x100))
+    val += this[offset + --i] * mul;
+  mul *= 0x80;
+
+  if (val &gt;= mul)
+    val -= Math.pow(2, 8 * byteLength);
+
+  return val;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.readIntLE" id="apidoc.element.node-uuid.BufferClass.prototype.readIntLE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readIntLE
+        <span class="apidocSignatureSpan">(offset, byteLength, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readIntLE = function (offset, byteLength, noAssert) {
+  offset = offset &gt;&gt;&gt; 0;
+  byteLength = byteLength &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkOffset(offset, byteLength, this.length);
+
+  var val = this[offset];
+  var mul = 1;
+  var i = 0;
+  while (++i &lt; byteLength &amp;&amp; (mul *= 0x100))
+    val += this[offset + i] * mul;
+  mul *= 0x80;
+
+  if (val &gt;= mul)
+    val -= Math.pow(2, 8 * byteLength);
+
+  return val;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.readUInt16BE" id="apidoc.element.node-uuid.BufferClass.prototype.readUInt16BE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readUInt16BE
+        <span class="apidocSignatureSpan">(offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readUInt16BE = function (offset, noAssert) {
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkOffset(offset, 2, this.length);
+  return (this[offset] &lt;&lt; 8) | this[offset + 1];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.readUInt16LE" id="apidoc.element.node-uuid.BufferClass.prototype.readUInt16LE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readUInt16LE
+        <span class="apidocSignatureSpan">(offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readUInt16LE = function (offset, noAssert) {
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkOffset(offset, 2, this.length);
+  return this[offset] | (this[offset + 1] &lt;&lt; 8);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.readUInt32BE" id="apidoc.element.node-uuid.BufferClass.prototype.readUInt32BE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readUInt32BE
+        <span class="apidocSignatureSpan">(offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readUInt32BE = function (offset, noAssert) {
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkOffset(offset, 4, this.length);
+
+  return (this[offset] * 0x1000000) +
+      ((this[offset + 1] &lt;&lt; 16) |
+      (this[offset + 2] &lt;&lt; 8) |
+      this[offset + 3]);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.readUInt32LE" id="apidoc.element.node-uuid.BufferClass.prototype.readUInt32LE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readUInt32LE
+        <span class="apidocSignatureSpan">(offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readUInt32LE = function (offset, noAssert) {
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkOffset(offset, 4, this.length);
+
+  return ((this[offset]) |
+      (this[offset + 1] &lt;&lt; 8) |
+      (this[offset + 2] &lt;&lt; 16)) +
+      (this[offset + 3] * 0x1000000);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.readUInt8" id="apidoc.element.node-uuid.BufferClass.prototype.readUInt8">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readUInt8
+        <span class="apidocSignatureSpan">(offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readUInt8 = function (offset, noAssert) {
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkOffset(offset, 1, this.length);
+  return this[offset];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.readUIntBE" id="apidoc.element.node-uuid.BufferClass.prototype.readUIntBE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readUIntBE
+        <span class="apidocSignatureSpan">(offset, byteLength, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readUIntBE = function (offset, byteLength, noAssert) {
+  offset = offset &gt;&gt;&gt; 0;
+  byteLength = byteLength &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkOffset(offset, byteLength, this.length);
+
+  var val = this[offset + --byteLength];
+  var mul = 1;
+  while (byteLength &gt; 0 &amp;&amp; (mul *= 0x100))
+    val += this[offset + --byteLength] * mul;
+
+  return val;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.readUIntLE" id="apidoc.element.node-uuid.BufferClass.prototype.readUIntLE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>readUIntLE
+        <span class="apidocSignatureSpan">(offset, byteLength, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readUIntLE = function (offset, byteLength, noAssert) {
+  offset = offset &gt;&gt;&gt; 0;
+  byteLength = byteLength &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkOffset(offset, byteLength, this.length);
+
+  var val = this[offset];
+  var mul = 1;
+  var i = 0;
+  while (++i &lt; byteLength &amp;&amp; (mul *= 0x100))
+    val += this[offset + i] * mul;
+
+  return val;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.slice" id="apidoc.element.node-uuid.BufferClass.prototype.slice">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>slice
+        <span class="apidocSignatureSpan">(start, end)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function slice(start, end) {
+  const srcLength = this.length;
+  start = adjustOffset(start, srcLength);
+  end = end !== undefined ? adjustOffset(end, srcLength) : srcLength;
+  const newLength = end &gt; start ? end - start : 0;
+  return new FastBuffer(this.buffer, this.byteOffset + start, newLength);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        H[1] = (H[1]+b) &gt;&gt;&gt; 0;
+        H[2] = (H[2]+c) &gt;&gt;&gt; 0;
+        H[3] = (H[3]+d) &gt;&gt;&gt; 0;
+        H[4] = (H[4]+e) &gt;&gt;&gt; 0;
+    }
+
+    // convert H0..H4 to hex strings (with leading zeros)
+    for (var h=0; h&lt;H.length; h++) H[h] = ('00000000'+H[h].toString(16)).<span class="apidocCodeKeywordSpan">slice
+</span>(-8);
+
+    // concatenate H0..H4, with separator if required
+    var separator = opt.outFormat=='hex-w' ? ' ' : '';
+
+    return H.join(separator);
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.swap16" id="apidoc.element.node-uuid.BufferClass.prototype.swap16">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>swap16
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function swap16() {
+  // For Buffer.length &lt; 128, it's generally faster to
+  // do the swap in javascript. For larger buffers,
+  // dropping down to the native code is faster.
+  const len = this.length;
+  if (len % 2 !== 0)
+    throw new RangeError('Buffer size must be a multiple of 16-bits');
+  if (len &lt; 128) {
+    for (var i = 0; i &lt; len; i += 2)
+      swap(this, i, i + 1);
+    return this;
+  }
+  return swap16n(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.swap32" id="apidoc.element.node-uuid.BufferClass.prototype.swap32">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>swap32
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function swap32() {
+  // For Buffer.length &lt; 192, it's generally faster to
+  // do the swap in javascript. For larger buffers,
+  // dropping down to the native code is faster.
+  const len = this.length;
+  if (len % 4 !== 0)
+    throw new RangeError('Buffer size must be a multiple of 32-bits');
+  if (len &lt; 192) {
+    for (var i = 0; i &lt; len; i += 4) {
+      swap(this, i, i + 3);
+      swap(this, i + 1, i + 2);
+    }
+    return this;
+  }
+  return swap32n(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.swap64" id="apidoc.element.node-uuid.BufferClass.prototype.swap64">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>swap64
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function swap64() {
+  // For Buffer.length &lt; 192, it's generally faster to
+  // do the swap in javascript. For larger buffers,
+  // dropping down to the native code is faster.
+  const len = this.length;
+  if (len % 8 !== 0)
+    throw new RangeError('Buffer size must be a multiple of 64-bits');
+  if (len &lt; 192) {
+    for (var i = 0; i &lt; len; i += 8) {
+      swap(this, i, i + 7);
+      swap(this, i + 1, i + 6);
+      swap(this, i + 2, i + 5);
+      swap(this, i + 3, i + 4);
+    }
+    return this;
+  }
+  return swap64n(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.toJSON" id="apidoc.element.node-uuid.BufferClass.prototype.toJSON">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>toJSON
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toJSON = function () {
+  if (this.length) {
+    const data = [];
+    for (var i = 0; i &lt; this.length; ++i)
+      data[i] = this[i];
+    return { type: 'Buffer', data };
+  } else {
+    return { type: 'Buffer', data: [] };
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.toString" id="apidoc.element.node-uuid.BufferClass.prototype.toString">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+  let result;
+  if (arguments.length === 0) {
+    result = this.utf8Slice(0, this.length);
+  } else {
+    result = slowToString.apply(this, arguments);
+  }
+  if (result === undefined)
+    throw new Error('"toString()" failed');
+  return result;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// uuid-js - string form
+if (uuidjs) {
+  for (var i = 0, t = Date.now(); i &lt; N; i++) uuidjs.create(4);
+  rate('uuidjs.create(4)', t);
+}
+
+// 140byte.es
+for (var i = 0, t = Date.now(); i &lt; N; i++) 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(s,r){
+r=Math.random()*16|0;return (s=='x'?r:r&amp;0x3|0x8).<span class="apidocCodeKeywordSpan">toString</span>(16)});
+rate('140byte.es_v4', t);
+
+console.log('');
+console.log('# v1');
+
+// node-uuid - v1 string form
+if (nodeuuid) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.ucs2Slice" id="apidoc.element.node-uuid.BufferClass.prototype.ucs2Slice">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>ucs2Slice
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ucs2Slice() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.ucs2Write" id="apidoc.element.node-uuid.BufferClass.prototype.ucs2Write">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>ucs2Write
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ucs2Write() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.utf8Slice" id="apidoc.element.node-uuid.BufferClass.prototype.utf8Slice">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>utf8Slice
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function utf8Slice() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.utf8Write" id="apidoc.element.node-uuid.BufferClass.prototype.utf8Write">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>utf8Write
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function utf8Write() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.write" id="apidoc.element.node-uuid.BufferClass.prototype.write">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>write
+        <span class="apidocSignatureSpan">(string, offset, length, encoding)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">write = function (string, offset, length, encoding) {
+  // Buffer#write(string);
+  if (offset === undefined) {
+    encoding = 'utf8';
+    length = this.length;
+    offset = 0;
+
+  // Buffer#write(string, encoding)
+  } else if (length === undefined &amp;&amp; typeof offset === 'string') {
+    encoding = offset;
+    length = this.length;
+    offset = 0;
+
+  // Buffer#write(string, offset[, length][, encoding])
+  } else if (isFinite(offset)) {
+    offset = offset &gt;&gt;&gt; 0;
+    if (isFinite(length)) {
+      length = length &gt;&gt;&gt; 0;
+      if (encoding === undefined)
+        encoding = 'utf8';
+    } else {
+      encoding = length;
+      length = undefined;
+    }
+  } else {
+    // if someone is still calling the obsolete form of write(), tell them.
+    // we don't want eg buf.write("foo", "utf8", 10) to silently turn into
+    // buf.write("foo", "utf8"), so we can't ignore extra args
+    throw new Error('Buffer.write(string, encoding, offset[, length]) ' +
+                    'is no longer supported');
+  }
+
+  var remaining = this.length - offset;
+  if (length === undefined || length &gt; remaining)
+    length = remaining;
+
+  if (string.length &gt; 0 &amp;&amp; (length &lt; 0 || offset &lt; 0))
+    throw new RangeError('Attempt to write outside buffer bounds');
+
+  if (!encoding)
+    encoding = 'utf8';
+
+  var loweredCase = false;
+  for (;;) {
+    switch (encoding) {
+      case 'hex':
+        return this.hexWrite(string, offset, length);
+
+      case 'utf8':
+      case 'utf-8':
+        return this.utf8Write(string, offset, length);
+
+      case 'ascii':
+        return this.asciiWrite(string, offset, length);
+
+      case 'latin1':
+      case 'binary':
+        return this.latin1Write(string, offset, length);
+
+      case 'base64':
+        // Warning: maxLength not taken into account in base64Write
+        return this.base64Write(string, offset, length);
+
+      case 'ucs2':
+      case 'ucs-2':
+      case 'utf16le':
+      case 'utf-16le':
+        return this.ucs2Write(string, offset, length);
+
+      default:
+        if (loweredCase)
+          throw new TypeError('Unknown encoding: ' + encoding);
+        encoding = ('' + encoding).toLowerCase();
+        loweredCase = true;
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.writeDoubleBE" id="apidoc.element.node-uuid.BufferClass.prototype.writeDoubleBE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeDoubleBE
+        <span class="apidocSignatureSpan">(val, offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function writeDoubleBE(val, offset, noAssert) {
+  val = +val;
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    binding.writeDoubleBE(this, val, offset);
+  else
+    binding.writeDoubleBE(this, val, offset, true);
+  return offset + 8;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.writeDoubleLE" id="apidoc.element.node-uuid.BufferClass.prototype.writeDoubleLE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeDoubleLE
+        <span class="apidocSignatureSpan">(val, offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function writeDoubleLE(val, offset, noAssert) {
+  val = +val;
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    binding.writeDoubleLE(this, val, offset);
+  else
+    binding.writeDoubleLE(this, val, offset, true);
+  return offset + 8;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.writeFloatBE" id="apidoc.element.node-uuid.BufferClass.prototype.writeFloatBE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeFloatBE
+        <span class="apidocSignatureSpan">(val, offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function writeFloatBE(val, offset, noAssert) {
+  val = +val;
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    binding.writeFloatBE(this, val, offset);
+  else
+    binding.writeFloatBE(this, val, offset, true);
+  return offset + 4;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.writeFloatLE" id="apidoc.element.node-uuid.BufferClass.prototype.writeFloatLE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeFloatLE
+        <span class="apidocSignatureSpan">(val, offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function writeFloatLE(val, offset, noAssert) {
+  val = +val;
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    binding.writeFloatLE(this, val, offset);
+  else
+    binding.writeFloatLE(this, val, offset, true);
+  return offset + 4;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.writeInt16BE" id="apidoc.element.node-uuid.BufferClass.prototype.writeInt16BE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeInt16BE
+        <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeInt16BE = function (value, offset, noAssert) {
+  value = +value;
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkInt(this, value, offset, 2, 0x7fff, -0x8000);
+  this[offset] = (value &gt;&gt;&gt; 8);
+  this[offset + 1] = value;
+  return offset + 2;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.writeInt16LE" id="apidoc.element.node-uuid.BufferClass.prototype.writeInt16LE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeInt16LE
+        <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeInt16LE = function (value, offset, noAssert) {
+  value = +value;
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkInt(this, value, offset, 2, 0x7fff, -0x8000);
+  this[offset] = value;
+  this[offset + 1] = (value &gt;&gt;&gt; 8);
+  return offset + 2;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.writeInt32BE" id="apidoc.element.node-uuid.BufferClass.prototype.writeInt32BE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeInt32BE
+        <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeInt32BE = function (value, offset, noAssert) {
+  value = +value;
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkInt(this, value, offset, 4, 0x7fffffff, -0x80000000);
+  this[offset] = (value &gt;&gt;&gt; 24);
+  this[offset + 1] = (value &gt;&gt;&gt; 16);
+  this[offset + 2] = (value &gt;&gt;&gt; 8);
+  this[offset + 3] = value;
+  return offset + 4;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.writeInt32LE" id="apidoc.element.node-uuid.BufferClass.prototype.writeInt32LE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeInt32LE
+        <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeInt32LE = function (value, offset, noAssert) {
+  value = +value;
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkInt(this, value, offset, 4, 0x7fffffff, -0x80000000);
+  this[offset] = value;
+  this[offset + 1] = (value &gt;&gt;&gt; 8);
+  this[offset + 2] = (value &gt;&gt;&gt; 16);
+  this[offset + 3] = (value &gt;&gt;&gt; 24);
+  return offset + 4;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.writeInt8" id="apidoc.element.node-uuid.BufferClass.prototype.writeInt8">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeInt8
+        <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeInt8 = function (value, offset, noAssert) {
+  value = +value;
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkInt(this, value, offset, 1, 0x7f, -0x80);
+  this[offset] = value;
+  return offset + 1;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.writeIntBE" id="apidoc.element.node-uuid.BufferClass.prototype.writeIntBE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeIntBE
+        <span class="apidocSignatureSpan">(value, offset, byteLength, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeIntBE = function (value, offset, byteLength, noAssert) {
+  value = +value;
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert) {
+    checkInt(this,
+             value,
+             offset,
+             byteLength,
+             Math.pow(2, 8 * byteLength - 1) - 1,
+             -Math.pow(2, 8 * byteLength - 1));
+  }
+
+  var i = byteLength - 1;
+  var mul = 1;
+  var sub = 0;
+  this[offset + i] = value;
+  while (--i &gt;= 0 &amp;&amp; (mul *= 0x100)) {
+    if (value &lt; 0 &amp;&amp; sub === 0 &amp;&amp; this[offset + i + 1] !== 0)
+      sub = 1;
+    this[offset + i] = ((value / mul) &gt;&gt; 0) - sub;
+  }
+
+  return offset + byteLength;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.writeIntLE" id="apidoc.element.node-uuid.BufferClass.prototype.writeIntLE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeIntLE
+        <span class="apidocSignatureSpan">(value, offset, byteLength, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeIntLE = function (value, offset, byteLength, noAssert) {
+  value = +value;
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert) {
+    checkInt(this,
+             value,
+             offset,
+             byteLength,
+             Math.pow(2, 8 * byteLength - 1) - 1,
+             -Math.pow(2, 8 * byteLength - 1));
+  }
+
+  var i = 0;
+  var mul = 1;
+  var sub = 0;
+  this[offset] = value;
+  while (++i &lt; byteLength &amp;&amp; (mul *= 0x100)) {
+    if (value &lt; 0 &amp;&amp; sub === 0 &amp;&amp; this[offset + i - 1] !== 0)
+      sub = 1;
+    this[offset + i] = ((value / mul) &gt;&gt; 0) - sub;
+  }
+
+  return offset + byteLength;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.writeUInt16BE" id="apidoc.element.node-uuid.BufferClass.prototype.writeUInt16BE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeUInt16BE
+        <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeUInt16BE = function (value, offset, noAssert) {
+  value = +value;
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkInt(this, value, offset, 2, 0xffff, 0);
+  this[offset] = (value &gt;&gt;&gt; 8);
+  this[offset + 1] = value;
+  return offset + 2;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.writeUInt16LE" id="apidoc.element.node-uuid.BufferClass.prototype.writeUInt16LE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeUInt16LE
+        <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeUInt16LE = function (value, offset, noAssert) {
+  value = +value;
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkInt(this, value, offset, 2, 0xffff, 0);
+  this[offset] = value;
+  this[offset + 1] = (value &gt;&gt;&gt; 8);
+  return offset + 2;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.writeUInt32BE" id="apidoc.element.node-uuid.BufferClass.prototype.writeUInt32BE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeUInt32BE
+        <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeUInt32BE = function (value, offset, noAssert) {
+  value = +value;
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkInt(this, value, offset, 4, 0xffffffff, 0);
+  this[offset] = (value &gt;&gt;&gt; 24);
+  this[offset + 1] = (value &gt;&gt;&gt; 16);
+  this[offset + 2] = (value &gt;&gt;&gt; 8);
+  this[offset + 3] = value;
+  return offset + 4;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.writeUInt32LE" id="apidoc.element.node-uuid.BufferClass.prototype.writeUInt32LE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeUInt32LE
+        <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeUInt32LE = function (value, offset, noAssert) {
+  value = +value;
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkInt(this, value, offset, 4, 0xffffffff, 0);
+  this[offset + 3] = (value &gt;&gt;&gt; 24);
+  this[offset + 2] = (value &gt;&gt;&gt; 16);
+  this[offset + 1] = (value &gt;&gt;&gt; 8);
+  this[offset] = value;
+  return offset + 4;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.writeUInt8" id="apidoc.element.node-uuid.BufferClass.prototype.writeUInt8">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeUInt8
+        <span class="apidocSignatureSpan">(value, offset, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeUInt8 = function (value, offset, noAssert) {
+  value = +value;
+  offset = offset &gt;&gt;&gt; 0;
+  if (!noAssert)
+    checkInt(this, value, offset, 1, 0xff, 0);
+  this[offset] = value;
+  return offset + 1;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.writeUIntBE" id="apidoc.element.node-uuid.BufferClass.prototype.writeUIntBE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeUIntBE
+        <span class="apidocSignatureSpan">(value, offset, byteLength, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeUIntBE = function (value, offset, byteLength, noAssert) {
+  value = +value;
+  offset = offset &gt;&gt;&gt; 0;
+  byteLength = byteLength &gt;&gt;&gt; 0;
+  if (!noAssert) {
+    const maxBytes = Math.pow(2, 8 * byteLength) - 1;
+    checkInt(this, value, offset, byteLength, maxBytes, 0);
+  }
+
+  var i = byteLength - 1;
+  var mul = 1;
+  this[offset + i] = value;
+  while (--i &gt;= 0 &amp;&amp; (mul *= 0x100))
+    this[offset + i] = (value / mul) &gt;&gt;&gt; 0;
+
+  return offset + byteLength;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.BufferClass.prototype.writeUIntLE" id="apidoc.element.node-uuid.BufferClass.prototype.writeUIntLE">
+        function <span class="apidocSignatureSpan">node-uuid.BufferClass.prototype.</span>writeUIntLE
+        <span class="apidocSignatureSpan">(value, offset, byteLength, noAssert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeUIntLE = function (value, offset, byteLength, noAssert) {
+  value = +value;
+  offset = offset &gt;&gt;&gt; 0;
+  byteLength = byteLength &gt;&gt;&gt; 0;
+  if (!noAssert) {
+    const maxBytes = Math.pow(2, 8 * byteLength) - 1;
+    checkInt(this, value, offset, byteLength, maxBytes, 0);
+  }
+
+  var mul = 1;
+  var i = 0;
+  this[offset] = value;
+  while (++i &lt; byteLength &amp;&amp; (mul *= 0x100))
+    this[offset + i] = (value / mul) &gt;&gt;&gt; 0;
+
+  return offset + byteLength;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-uuid.sha1_browser" id="apidoc.module.node-uuid.sha1_browser">module node-uuid.sha1_browser</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.sha1_browser.hash" id="apidoc.element.node-uuid.sha1_browser.hash">
+        function <span class="apidocSignatureSpan">node-uuid.sha1_browser.</span>hash
+        <span class="apidocSignatureSpan">(msg, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hash = function (msg, options) {
+    var defaults = { msgFormat: 'string', outFormat: 'hex' };
+    var opt = Object.assign(defaults, options);
+
+    switch (opt.msgFormat) {
+        default: // default is to convert string to UTF-8, as SHA only deals with byte-streams
+        case 'string':   msg = Sha1.utf8Encode(msg);       break;
+        case 'hex-bytes':msg = Sha1.hexBytesToString(msg); break; // mostly for running tests
+    }
+
+    // constants [ï¿½4.2.1]
+    var K = [ 0x5a827999, 0x6ed9eba1, 0x8f1bbcdc, 0xca62c1d6 ];
+
+    // initial hash value [ï¿½5.3.1]
+    var H = [ 0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476, 0xc3d2e1f0 ];
+
+    // PREPROCESSING [ï¿½6.1.1]
+
+    msg += String.fromCharCode(0x80);  // add trailing '1' bit (+ 0's padding) to string [ï¿½5.1.1]
+
+    // convert string msg into 512-bit/16-integer blocks arrays of ints [ï¿½5.2.1]
+    var l = msg.length/4 + 2; // length (in 32-bit integers) of msg + ï¿½1ï¿½ + appended length
+    var N = Math.ceil(l/16);  // number of 16-integer-blocks required to hold 'l' ints
+    var M = new Array(N);
+
+    for (var i=0; i&lt;N; i++) {
+        M[i] = new Array(16);
+        for (var j=0; j&lt;16; j++) {  // encode 4 chars per integer, big-endian encoding
+            M[i][j] = (msg.charCodeAt(i*64+j*4)&lt;&lt;24) | (msg.charCodeAt(i*64+j*4+1)&lt;&lt;16) |
+                (msg.charCodeAt(i*64+j*4+2)&lt;&lt;8) | (msg.charCodeAt(i*64+j*4+3));
+        } // note running off the end of msg is ok 'cos bitwise ops on NaN return 0
+    }
+    // add length (in bits) into final pair of 32-bit integers (big-endian) [ï¿½5.1.1]
+    // note: most significant word would be (len-1)*8 &gt;&gt;&gt; 32, but since JS converts
+    // bitwise-op args to 32 bits, we need to simulate this by arithmetic operators
+    M[N-1][14] = ((msg.length-1)*8) / Math.pow(2, 32); M[N-1][14] = Math.floor(M[N-1][14]);
+    M[N-1][15] = ((msg.length-1)*8) &amp; 0xffffffff;
+
+    // HASH COMPUTATION [ï¿½6.1.2]
+
+    for (var i=0; i&lt;N; i++) {
+        var W = new Array(80);
+
+        // 1 - prepare message schedule 'W'
+        for (var t=0;  t&lt;16; t++) W[t] = M[i][t];
+        for (var t=16; t&lt;80; t++) W[t] = ROTL(W[t-3] ^ W[t-8] ^ W[t-14] ^ W[t-16], 1);
+
+        // 2 - initialise five working variables a, b, c, d, e with previous hash value
+        var a = H[0], b = H[1], c = H[2], d = H[3], e = H[4];
+
+        // 3 - main loop (use JavaScript '&gt;&gt;&gt; 0' to emulate UInt32 variables)
+        for (var t=0; t&lt;80; t++) {
+            var s = Math.floor(t/20); // seq for blocks of 'f' functions and 'K' constants
+            var T = (ROTL(a,5) + f(s,b,c,d) + e + K[s] + W[t]) &gt;&gt;&gt; 0;
+            e = d;
+            d = c;
+            c = ROTL(b, 30) &gt;&gt;&gt; 0;
+            b = a;
+            a = T;
+        }
+
+        // 4 - compute the new intermediate hash value (note 'addition modulo 2^32' ï¿½ JavaScript
+        // '&gt;&gt;&gt; 0' coerces to unsigned UInt32 which achieves modulo 2^32 addition)
+        H[0] = (H[0]+a) &gt;&gt;&gt; 0;
+        H[1] = (H[1]+b) &gt;&gt;&gt; 0;
+        H[2] = (H[2]+c) &gt;&gt;&gt; 0;
+        H[3] = (H[3]+d) &gt;&gt;&gt; 0;
+        H[4] = (H[4]+e) &gt;&gt;&gt; 0;
+    }
+
+    // convert H0..H4 to hex strings (with leading zeros)
+    for (var h=0; h&lt;H.length; h++) H[h] = ('00000000'+H[h].toString(16)).slice(-8);
+
+    // concatenate H0..H4, with separator if required
+    var separator = opt.outFormat=='hex-w' ? ' ' : '';
+
+    return H.join(separator);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.sha1_browser.hexBytesToString" id="apidoc.element.node-uuid.sha1_browser.hexBytesToString">
+        function <span class="apidocSignatureSpan">node-uuid.sha1_browser.</span>hexBytesToString
+        <span class="apidocSignatureSpan">(hexStr)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hexBytesToString = function (hexStr) {
+    hexStr = hexStr.replace(' ', ''); // allow space-separated groups
+    var str = '';
+    for (var i=0; i&lt;hexStr.length; i+=2) {
+        str += String.fromCharCode(parseInt(hexStr.slice(i, i+2), 16));
+    }
+    return str;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Sha1.hash = function(msg, options) {
+var defaults = { msgFormat: 'string', outFormat: 'hex' };
+var opt = Object.assign(defaults, options);
+
+switch (opt.msgFormat) {
+    default: // default is to convert string to UTF-8, as SHA only deals with byte-streams
+    case 'string':   msg = Sha1.utf8Encode(msg);       break;
+    case 'hex-bytes':msg = Sha1.<span class="apidocCodeKeywordSpan">hexBytesToString</span>(msg); break; // mostly for
+ running tests
+}
+
+// constants [ï¿½4.2.1]
+var K = [ 0x5a827999, 0x6ed9eba1, 0x8f1bbcdc, 0xca62c1d6 ];
+
+// initial hash value [ï¿½5.3.1]
+var H = [ 0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476, 0xc3d2e1f0 ];
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-uuid.sha1_browser.utf8Encode" id="apidoc.element.node-uuid.sha1_browser.utf8Encode">
+        function <span class="apidocSignatureSpan">node-uuid.sha1_browser.</span>utf8Encode
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">utf8Encode = function (str) {
+    return unescape(encodeURIComponent(str));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Sha1.hash = function(msg, options) {
+var defaults = { msgFormat: 'string', outFormat: 'hex' };
+var opt = Object.assign(defaults, options);
+
+switch (opt.msgFormat) {
+    default: // default is to convert string to UTF-8, as SHA only deals with byte-streams
+    case 'string':   msg = Sha1.<span class="apidocCodeKeywordSpan">utf8Encode</span>(msg);       break;
+    case 'hex-bytes':msg = Sha1.hexBytesToString(msg); break; // mostly for running tests
+}
+
+// constants [ï¿½4.2.1]
+var K = [ 0x5a827999, 0x6ed9eba1, 0x8f1bbcdc, 0xca62c1d6 ];
+
+// initial hash value [ï¿½5.3.1]
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
